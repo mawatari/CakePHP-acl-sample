@@ -104,4 +104,19 @@ class UsersController extends AppController {
 			$this->Session->setFlash(__('The user could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+
+	public function login() {
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				return $this->redirect($this->Auth->redirect());
+			}
+			$this->Session->setFlash(__('メールアドレスかパスワードが違います。'));
+		}
+		return $this->render();
+	}
+
+	public function logout() {
+		return $this->redirect($this->Auth->logout());
+	}
+}
