@@ -22,6 +22,9 @@ Thumbs.db
 #app/Config/core.php
 #app/Config/database.php
 
+app/tmp/cache/*
+!/app/tmp/cache/
+
 app/tmp/cache/models/*
 !app/tmp/cache/models/empty
  
