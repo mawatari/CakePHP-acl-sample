@@ -1,5 +1,5 @@
-CakePHP ACL
-===========
+CakePHP ACL Sample
+==================
 
 
 
@@ -42,4 +42,11 @@ Webブラウザで、`/admin/acl`にアクセスして、[Actions]タブの[Sync
 [Permissions]タブの[Roles Permissions]に移動し、権限を設定する
 
 （今回は、ユーザ単位での権限管理はしないように設定しているので、[Users roles]でエラーが表示されるのは正常な動作）
+
+
+
+Release notes
+-------------
+
+- 2013/12/20 v1.0
 
