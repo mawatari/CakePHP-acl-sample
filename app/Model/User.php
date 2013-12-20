@@ -10,6 +10,13 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 class User extends AppModel {
 
 /**
+ * Behavior
+ *
+ * @var array
+ */
+	public $actsAs = ['Acl' => ['type' => 'requester']];
+
+/**
  * Validation rules
  *
  * @var array
@@ -92,4 +99,21 @@ class User extends AppModel {
 		}
 		return true;
 	}
+
+	public function parentNode() {
+		if (!$this->id && empty($this->data)) {
+			return null;
+		}
+		if (isset($this->data['User']['group_id'])) {
+			$groupId = $this->data['User']['group_id'];
+		} else {
+			$groupId = $this->field('group_id');
+		}
+		if (!$groupId) {
+			return null;
+		} else {
+			return ['Group' => ['id' => $groupId]];
+		}
+	}
+
 }

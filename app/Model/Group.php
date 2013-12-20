@@ -8,6 +8,13 @@ App::uses('AppModel', 'Model');
 class Group extends AppModel {
 
 /**
+ * Behavior
+ *
+ * @var array
+ */
+	public $actsAs = ['Acl' => ['type' => 'requester']];
+
+/**
  * Validation rules
  *
  * @var array
@@ -47,5 +54,9 @@ class Group extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
+	public function parentNode() {
+		return null;
+	}
 
 }
