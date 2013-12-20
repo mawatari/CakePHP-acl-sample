@@ -69,7 +69,7 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
-CakePlugin::loadAll();
+CakePlugin::loadAll(['Acl' => ['bootstrap' => true]]);
 
 /**
  * You can attach event listeners to the request lifecycle as Dispatcher Filter. By default CakePHP bundles two filters:
@@ -106,3 +106,16 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+
+/*
+ * The model name used for the user role (typically 'Role' or 'Group')
+ */
+Configure :: write('acl.aro.role.model', 'Group');
+
+/*
+ * The foreign key's name for the roles
+ *
+ * (can be left empty if your foreign key's name follows CakePHP conventions)(e.g. 'role_id')
+ */
+Configure :: write('acl.aro.role.foreign_key', 'group_id');
