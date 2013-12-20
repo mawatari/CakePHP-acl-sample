@@ -14,7 +14,12 @@ class User extends AppModel {
  *
  * @var array
  */
-	public $actsAs = ['Acl' => ['type' => 'requester']];
+	public $actsAs = [
+		'Acl' => [
+			'type' => 'requester',
+			'enabled' => false
+		]
+	];
 
 /**
  * Validation rules
@@ -114,6 +119,10 @@ class User extends AppModel {
 		} else {
 			return ['Group' => ['id' => $groupId]];
 		}
+	}
+
+	public function bindNode($user) {
+		return ['model' => 'Group', 'foreign_key' => $user['User']['group_id']];
 	}
 
 }
